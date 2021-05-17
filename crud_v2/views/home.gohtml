@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/bootstrap-3.4.1-dist/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        padding-top: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    {{/* **************************NAVBAR********************************* */}}
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"> Z CORP </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <!-- <ul class="nav navbar-nav"> -->
+          <!-- <li class="active">
+                <a href="#">Link <span class="sr-only">(current)</span></a>
+              </li> -->
+          <!-- <li><a href="#">Link</a></li> -->
+          <!-- <li class="dropdown">
+                <a
+                  href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >Dropdown <span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li> -->
+          <!-- </ul> -->
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" />
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right nav-pills">
+            <li role="presentation" class="active">
+              <a href="/logout">LogOut</a>
+            </li>
+            <!-- <li class="dropdown">
+                <a
+                  href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >Dropdown <span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li> -->
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+    {{/* **************************END NAVBAR********************************* */}}
+    <h1 style="text-align: center; color: black">Products</h1>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-6">
+            <div class="input-group">
+              <span class="input-group-addon">Name</span>
+              <input type="text" id="name" name="name" class="form-control" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <span class="input-group-addon">Color</span>
+              <input type="text" id="color" name="color" class="form-control" />
+              <span class="input-group-btn">
+                <button id="addButton" class="btn btn-success">Add</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Color</th>
+              </tr>
+            </thead>
+            <tbody id="productsContainer"></tbody>
+          </table>
+        </div>
+      </div>
+      <br />
+      <div class="modal fade" id="editDialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <strong class="modal-title">Edit</strong>
+            </div>
+            <div class="modal-body">
+              <div class="form-horizontal">
+                <div class="form-group">
+                  <label class="control-label col-md-2">Name </label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" id="editName" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-2">Color </label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" id="editColor" />
+                  </div>
+                </div>
+                <input type="hidden" id="editProductId" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                id="editButton"
+                data-dismiss="modal"
+                style="float: left"
+                class="btn btn-sm btn-success"
+                onclick="editFooterButton()"
+              >
+                Edit
+              </button>
+              <button data-dismiss="modal" class="btn btn-sm btn-primary">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="deleteDialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <strong class="modal-title">Delete</strong>
+            </div>
+            <div class="modal-body">
+              <p>
+                <img
+                  style="height: 20px; margin-right: 10px"
+                  src="/assets/images/deleteIcon.jpg"
+                  alt=""
+                />Delete this product?
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                id="deleteButton"
+                data-dismiss="modal"
+                style="float: left"
+                class="btn btn-sm btn-danger"
+                onclick="deleteFooterButton()"
+              >
+                Delete
+              </button>
+              <button data-dismiss="modal" class="btn btn-sm btn-primary">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/*
+    <div class="container">
+      <h1>Panel Admin</h1>
+      {{if .Username}}
+      <ul>
+        <li>username : {{.Username}}</li>
+        <li>firstname : {{.Firstname}}</li>
+        <li>lastname :{{.Lastname}}</li>
+        <li>password :{{.Password}}</li>
+      </ul>
+      {{ end }}
+      <a href="/logout">logout</a>
+    </div>
+    */}}
+    <!-- Footer -->
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container">
+        <p style="color: white;" class="navbar-text">© Developed By Hamed Hosseini Zabet </p>
+        </div>
+      </div>
+    <!-- Footer -->
+
+    {{/* **************************scripts********************************* */}}
+    <script src="/assets/jQuery 3.4.1/jquery.min.js"></script>
+    <script src="/assets/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#addButton").click(function () {
+          var name = $("#name").val();
+          var color = $("#color").val();
+          $.post("/addProduct", { name: name, color: color }).done(function (
+            product
+          ) {
+            $("#name").val("");
+            $("#color").val("");
+            loadProducts();
+          });
+        });
+      });
+      function loadProducts() {
+        $("#productsContainer").html("");
+        $.ajax("/getProducts").done(function (products) {
+          products.forEach((product) => {
+            $("#productsContainer").append(
+              "<tr><td>" +
+                product.name +
+                "</td><td>" +
+                product.color +
+                "</td><td><button value=" +
+                product.id +
+                " data-toggle='modal' onClick='editProduct(\"" +
+                product.id +
+                "\")' data-target='#editDialog' class='btn btn-sm btn-warning edit-button'>Edit</button></td><td><button value=" +
+                product.id +
+                " data-toggle='modal' onClick='deleteProduct(\"" +
+                product.id +
+                "\")' data-target='#deleteDialog' class='btn btn-sm btn-danger delete-button'>Delete</button></td></tr>"
+            );
+          });
+        });
+      }
+      loadProducts();
+      function editProduct(id) {
+        $("#editProductId").val(id);
+        $.ajax("/getProduct/" + id).done(function (product) {
+          $("#editName").val(product.name);
+          $("#editColor").val(product.color);
+        });
+      }
+      function editFooterButton() {
+        $.ajax({
+          url: "/editProduct/" + $("#editProductId").val(),
+          data: "name="+$("#editName").val()+"&color="+$("#editColor").val(),
+          type: 'PUT',
+          success: function(product) {
+            loadProducts();
+          }
+        });
+      }
+      function deleteProduct(id) {
+        $("#deleteButton").val(id);
+      }
+      function deleteFooterButton() {
+        $.ajax({
+          url: "/deleteProduct/" + $("#deleteButton").val(),
+          type: 'DELETE',
+          success: function(product) {
+            loadProducts();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

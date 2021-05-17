@@ -1,0 +1,28 @@
+package main
+
+import (
+	"log"
+	"os"
+	"text/template"
+)
+
+var tpl *template.Template
+
+func init() {
+	tpl = template.Must(template.ParseFiles("tpl.gohtml"))
+}
+func main() {
+
+	// sages := []string{"Gandi", "MLK", "Buddah", "Jesus", "Mohammad"}
+	sages := map[string]string{
+		"Indian":   "Gandhi",
+		"American": "MLK",
+		"Meditate": "Buddah",
+		"Love":     "Jesus",
+		"Prophet":  "Mohamaad",
+	}
+	err := tpl.Execute(os.Stdout, sages)
+	if err != nil {
+		log.Fatalln(err)
+	}
+}

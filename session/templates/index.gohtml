@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <title>Index</title>
+    <style>
+      body {
+        background-image: url("/assets/(160).jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <br />
+    <div class="container">
+      <br />
+      <form action="/" method="POST">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon">Username </span>
+                <input
+                  type="email"
+                  id="username"
+                  name="username"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon">First Name </span>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon">Last Name </span>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  class="form-control"
+                />
+                <span class="input-group-btn">
+                  <button
+                    id="submitButton"
+                    name="submitButton"
+                    class="btn btn-success"
+                  >
+                    Submit
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br />
+    {{if .UserName}}
+    <ul>
+      <li>{{.UserName}}</li>
+      <li>{{.First}}</li>
+      <li>{{.Last}}</li>
+    </ul>
+    {{ end }}
+    <h1 style="text-align: center; color: yellow">
+      Go to the <a href="/bar">bar</a>
+    </h1>
+    <h1 style="text-align: center; color: yellow">
+      Go to the <a href="/login">login</a>
+    </h1>
+  </body>
+</html>

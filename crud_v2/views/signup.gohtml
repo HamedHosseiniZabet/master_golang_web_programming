@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title> Sign Up </title>
+    <link rel="stylesheet" type="text/css" href="/assets/signup/blue.css" />
+    <style>
+      body {
+        background-image: url("/assets/images/(160).jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Sign Up Form</h1>
+      {{/* {{if .}}
+      <h1 style="color: red">{{.}}</h1>
+      {{ end }} */}}
+      <div id="container">
+        <section class="tabs">
+          <input
+            id="tab-1"
+            type="radio"
+            name="radio-set"
+            class="tab-selector-1"
+            checked="checked"
+          />
+          <span for="tab-1" class="tab-label-1">Signup</span>
+
+          {{/*
+          <input
+            id="tab-2"
+            type="radio"
+            name="radio-set"
+            class="tab-selector-2"
+          />
+          <span for="tab-2" class="tab-label-2">Login</span>
+
+          <input
+            id="tab-3"
+            type="radio"
+            name="radio-set"
+            class="tab-selector-3"
+          />
+          <span for="tab-3" class="tab-label-3">Forget Password</span> */}}
+
+          <div class="clear-shadow"></div>
+
+          <div id="content">
+            <div class="content-1">
+              <p>
+                <a href="#" class="media tw">Twitter</a
+                ><a href="#" class="media fb">Facebook</a>
+              </p>
+              {{/* ****************************** SIGNUP ********************************* */}}
+              <form action="/signupProcess" autocomplete="off" method="POST">
+                <p>
+                  <label for="username" class="uname" data-icon="u"
+                    >Your username</label
+                  >
+                  <input
+                    class="field"
+                    name="username"
+                    required="required"
+                    type="email"
+                    placeholder="myusername"
+                  />
+                </p>
+                <p>
+                  <label for="firstname" class="uname" data-icon="f"
+                    >Your firstname</label
+                  >
+                  <input
+                    class="field"
+                    name="firstname"
+                    required="required"
+                    type="text"
+                    placeholder="myfirstname"
+                  />
+                </p>
+                <p>
+                  <label for="lastname" class="uname" data-icon="l"
+                    >Your lastname</label>
+                  <input
+                    class="field"
+                    name="lastname"
+                    required="required"
+                    type="text"
+                    placeholder="mylastname"
+                  />
+                </p>
+                {{/*
+                <p>
+                  <label for="emailsignup" class="youmail" data-icon="e">
+                    Your email</label
+                  >
+                  <input
+                    class="field"
+                    name="emailsignup"
+                    required="required"
+                    type="email"
+                    placeholder="myusername@gmail.com"
+                  />
+                </p>
+                */}}
+                <p>
+                  <label for="password" class="youpasswd" data-icon="p"
+                    >Your password
+                  </label>
+                  <input
+                    class="field"
+                    name="password"
+                    required="required"
+                    type="password"
+                    placeholder="mypassword"
+                  />
+                </p>
+                {{/*
+                <p>
+                  <label
+                    for="passwordsignup_confirm"
+                    class="youpasswd"
+                    data-icon="p"
+                    >Please confirm your password
+                  </label>
+                  <input
+                    class="field"
+                    name="passwordsignup_confirm"
+                    required="required"
+                    type="password"
+                    placeholder="mypassword"
+                  />
+                </p>
+                */}}
+                <p class="signin button">
+                  <input type="checkbox" required="required" /> I agree with
+                  terms and conditions
+                  <input type="submit" value="Sign up" />
+                </p>
+                <p class="signin button">
+                  i have an account, go to
+                  <a style="color: red !important" href="/login">login</a>
+                </p>
+                {{if .}}
+                <p style="color: red !important" class="signin button">
+                  {{.}}
+                </p>
+                {{ end }}
+              </form>
+              {{/* ****************************** SIGNUP ********************************* */}}
+            </div>
+            {{/*
+            <div class="content-2">
+              <p>
+                <a href="#" class="media tw">Facebook</a
+                ><a href="#" class="media fb">Twitter</a>
+              </p>
+              <form action="" autocomplete="on">
+                <p>
+                  <label for="username" class="uname" data-icon="u">
+                    Your email or username
+                  </label>
+                  <input
+                    class="field"
+                    name="username"
+                    required="required"
+                    type="text"
+                    placeholder="myusername or myusername@gmail.com"
+                  />
+                </p>
+                <p>
+                  <label for="password" class="youpasswd" data-icon="p">
+                    Your password
+                  </label>
+                  <input
+                    class="field"
+                    name="password"
+                    required="required"
+                    type="password"
+                    placeholder="mypassword"
+                  />
+                </p>
+                <p class="keeplogin">
+                  <input
+                    type="checkbox"
+                    name="loginkeeping"
+                    id="loginkeeping"
+                    value="loginkeeping"
+                  />
+                  Keep me logged in
+                  <input type="submit" value="Login" />
+                </p>
+              </form>
+            </div>
+            <div class="content-3">
+              <form action="" autocomplete="on">
+                <p>
+                  <label for="emailsignup" class="youmail" data-icon="e">
+                    Your email</label
+                  >
+                  <input
+                    class="field"
+                    name="emailsignup"
+                    required="required"
+                    type="email"
+                    placeholder="myusername@gmail.com"
+                  />
+                </p>
+                <p class="signin button">
+                  <input type="submit" value="Get New Password" />
+                </p>
+              </form>
+            </div>
+            */}}
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
